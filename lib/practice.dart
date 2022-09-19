@@ -26,10 +26,45 @@ class _ExampleState extends State<Example> {
         text: 'The truth is rarely pure and never simple',
         author: 'Oscar Wilde'),
   ];
+
+  Widget quoteTemplate(quote) {
+    return Card(
+      elevation: 5,
+      margin: EdgeInsets.fromLTRB(16, 16, 16, 0),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Text(
+              quote.text,
+              style: TextStyle(
+                letterSpacing: 1.5,
+                fontSize: 18,
+                color: Colors.grey[600],
+              ),
+            ),
+            SizedBox(height: 6),
+            Text(
+              quote.author,
+              textAlign: TextAlign.end,
+              style: TextStyle(
+                fontSize: 14,
+                fontStyle: FontStyle.italic,
+                color: Colors.grey[800],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.redAccent,
         title: Text('List to Map'),
         centerTitle: true,
       ),
@@ -38,10 +73,7 @@ class _ExampleState extends State<Example> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: quotes.map((quote) {
-            return Container(
-              padding: EdgeInsets.fromLTRB(0, 0, 0, 10),
-              child: Text('${quote.text} - ${quote.author}'),
-            );
+            return quoteTemplate(quote);
           }).toList(),
         ),
       ),
