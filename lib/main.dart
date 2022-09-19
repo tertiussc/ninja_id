@@ -6,8 +6,15 @@ void main() {
   );
 }
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  int ninjaLevel = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +70,7 @@ class HomePage extends StatelessWidget {
               ),
               SizedBox(height: 10),
               Text(
-                '25',
+                '$ninjaLevel',
                 style: TextStyle(
                   color: Colors.amberAccent.shade200,
                   letterSpacing: 2,
@@ -88,6 +95,19 @@ class HomePage extends StatelessWidget {
               )
             ],
           ),
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            setState(() {
+              ninjaLevel += 1;
+            });
+          },
+          child: Icon(
+            Icons.add,
+            color: Colors.amber,
+            size: 30,
+          ),
+          backgroundColor: Colors.grey[200],
         ),
       ),
     );
