@@ -97,6 +97,7 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         floatingActionButton: FloatingActionButton(
+          splashColor: Colors.grey[800],
           onPressed: () {
             setState(() {
               ninjaLevel += 1;

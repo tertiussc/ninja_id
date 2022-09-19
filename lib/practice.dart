@@ -6,43 +6,34 @@ void main() {
   ));
 }
 
-class Example extends StatelessWidget {
+class Example extends StatefulWidget {
   const Example({super.key});
 
+  @override
+  State<Example> createState() => _ExampleState();
+}
+
+class _ExampleState extends State<Example> {
+  List<String> quotes = [
+    'Be yourself; everyone else is already taken',
+    'I have nothing to declare except my genius',
+    'The truth is rarely pure and never simple',
+    'Never have I ever',
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Expanded'),
+        title: Text('List to Map'),
         centerTitle: true,
       ),
-      body: Center(
-        child: Row(
-          children: [
-            Expanded(
-              flex: 1,
-              child: Container(
-                padding: EdgeInsets.all(30),
-                color: Colors.cyan,
-                child: Text('1'),
-              ),
-            ),
-            Expanded(
-              flex: 4,
-              child: Container(
-                padding: EdgeInsets.all(30),
-                color: Colors.pinkAccent,
-                child: Text('2'),
-              ),
-            ),
-            Expanded(
-              child: Container(
-                padding: EdgeInsets.all(30),
-                color: Colors.amber,
-                child: Text('3'),
-              ),
-            ),
-          ],
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: quotes.map((quote) {
+            return Text(quote);
+          }).toList(),
         ),
       ),
     );
